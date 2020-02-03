@@ -1,3 +1,8 @@
+# This code is work that I had written for my past employer, FED USA Gaming, during the summer of 2019. Since I wrote this program only after one semester of coding experience, it is not my best work. 
+# However, I believe this code represents my ability to quickly adapt to the situation at hand and teach myself tools such as Selenium.
+
+# Author: Jack Flannery
+
 # this program will login into the ACD inventory system, navigate to the inventory text file, and then make a new Excel file
 # with the inventory information on it
 
@@ -15,11 +20,6 @@ from selenium.webdriver.common.by import By
 import os
 
 import time
-
-# importing the pandas library, which will allow text and csv files to be moved and altered.
-# writing "as pd" means that the pandas library can be referred to as "pd" instead of "pandas". Saving letters :)
-
-import pandas as pd
 
 # naming a variable called options in which the options preferences will be stored for the web driver
 
