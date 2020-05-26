@@ -1,8 +1,3 @@
-# This code is work that I had written for my past employer, FED USA Gaming, during the summer of 2019. Since I wrote this program only after one semester of coding experience, it is not my best work. 
-# However, I believe this code represents my ability to quickly adapt to the situation at hand and teach myself tools such as Selenium.
-
-# Author: Jack Flannery
-
 # this program will login into the ACD inventory system, navigate to the inventory text file, and then make a new Excel file
 # with the inventory information on it
 
@@ -20,6 +15,13 @@ from selenium.webdriver.common.by import By
 import os
 
 import time
+
+import dotenv
+
+# importing the pandas library, which will allow text and csv files to be moved and altered.
+# writing "as pd" means that the pandas library can be referred to as "pd" instead of "pandas". Saving letters :)
+
+import pandas as pd
 
 # naming a variable called options in which the options preferences will be stored for the web driver
 
@@ -44,13 +46,15 @@ driver = webdriver.Chrome(options=options)
 
 def site_login():
 
-    # Logging into the popup window. The username and password of my employer were replaced with placeholders for the purpose
-    # of uploading this code to my website.
-    driver.get('ftp://USERNAME:PASSWORD@ftp.acdd.com')
+    dotenv.load_dotenv()
+
+    # Logging into the popup window. The username and password of my employer were placed in environment files in the same directory of the python file. 
+
+    driver.get('ftp://' + os.getenv('USER') + ':' + os.getenv('PASS')+ '@ftp.acdd.com')
 
     # moving to the inventory page, where the "acd.txt" will be selected and downloaded to the desired folder.
     # the XPATH of the "acd.txt" file is used below
-    driver.get('ftp://USERNAME:PASSWORD@ftp.acdd.com/Inventory')
+    driver.get('ftp://' + os.getenv('USER') + ':' + os.getenv('PASS')+ '@ftp.acdd.com/Inventory')
     driver.find_element(By.XPATH, '//*[@id="tbody"]/tr[1]/td[1]/a').click()
 
     # time.sleep() will keep the web driver window open long enough for the necessary file to be downloaded
